@@ -193,3 +193,22 @@ Explain AWS IAM in simple terms
 - Allowed
 - Sent to LLM after validation
 - Logged for audit
+
+---
+
+## Production Architecture (AWS Example)
+
+```text
+Client
+   ↓
+API Gateway
+   ↓
+Lambda (FastAPI)
+   ↓
+Security Controls Layer
+   - Auth (IAM / JWT)
+   - Prompt Injection Detection
+   - DLP Redaction
+   - Logging (CloudWatch)
+   ↓
+LLM Provider (OpenAI / Amazon Bedrock)
